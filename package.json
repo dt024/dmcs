@@ -1,0 +1,12 @@
+{
+  "name": "node_hello_world",
+  "version": "1.0.0",
+  "description": "A simple HTTP server that returns Hello World upon visit.",
+  "main": "index.js",
+  "author": "Natsu Kagami",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "nedb": "^1.8.0"
+  }
+}

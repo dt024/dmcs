@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Đoàn thanh niên Cộng sản HCM</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding"> 
+	<style>
+	#container {
+		margin: auto;
+		padding: 25px;
+		width: 851px;
+		border: 2px solid black;
+		background-color: white;
+	} 
+	#header {
+		text-align: center;
+		color: white;
+	}
+	img {
+		width: 200px;
+	}
+	#text {
+		position: relative;
+		float: right;
+		width: 80%;
+	}
+	#text2 {
+		width: 100%;
+	}
+	#submit {
+		float: right; 
+	}
+	.highlight {
+		color: red;
+	}	
+
+	button{
+		float: right;
+	}
+	body{
+		width: 905px;
+		margin: auto;
+		background-color: blue;
+	}
+
+	img.backgroundimg{
+		display: block;
+		margin: auto;
+	}
+	ul.list {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    background-color:red
+	}
+
+	
+	.active {
+	   background-color: yellow;
+	    color: red;
+
+	}
+	li.nav {
+		    float: left;
+		}
+
+	li.nav a {
+		font-size: 20px;
+	    display: block;
+	    color: whitesmoke;
+	    text-align: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	}
+
+	li.nav a:hover {
+	    background-color:yellow;
+		color: red;
+	}
+	
+	li a.active{
+		color: red;
+		background-color: yellow;
+	}
+
+
+	</style>
+</head>
+
+<body>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+		<script type="text/javascript">
+	var data = [data];
+	var count=0;
+	var listofquestions = [];
+	for(var i =0; i<data.length; i++){
+		listofquestions[i] = data[i][1];
+	}
+
+	function addtochosen(question){
+		$("#searchresults").empty();
+		$("#chosenresults").append("<li class='" + count + "'>" + question + "</li><button class='"+count+"'onclick=\" $('."+count+"').remove();\">Remove this entry</button>");
+		count++;
+	}
+
+		</script>
+		<!--<script type="text/javascript" src="./template/searchengine.js"></script>-->
+		<script type="text/javascript"> 
+	function fuzzyMatch(searchSet, query) {
+	    var tokens = query.toLowerCase().split(''),
+	        matches = [];
+
+	    searchSet.forEach(function(string) {
+	        var tokenIndex = 0,
+	            stringIndex = 0,
+	            matchWithHighlights = '',
+	            matchedPositions = [];
+
+	        string = string.toLowerCase();
+
+	        while (stringIndex < string.length) {
+	            if (string[stringIndex] === tokens[tokenIndex]) {
+	                matchWithHighlights += highlight(string[stringIndex]);
+	                matchedPositions.push(stringIndex);
+	                tokenIndex++;
+
+	                if (tokenIndex >= tokens.length) {
+	                    matches.push({
+	                        match: string,
+	                        highlighted: matchWithHighlights + string.slice(stringIndex + 1),
+	                        positions: matchedPositions
+	                    });
+
+	                    break;
+	                }
+	            }
+	            else {
+	                matchWithHighlights += string[stringIndex];
+	            }
+
+	            stringIndex++;
+	        }
+	    });
+	    console.log(matches.length);
+
+	    return matches;
+	}
+
+	function highlight(string) {
+	    return '<span class="highlight">' + string + '</span>';
+	}
+
+	function search() {
+	    var query = $('input').first().val(),
+	        searchSet = listofquestions,
+	        matches = fuzzyMatch(searchSet, query),
+	        $resultList = $('#searchresults');
+	    
+	    $resultList.empty();
+	    matches.forEach(function(singlematch) {
+	        $("#searchresults").append("<li><a onclick='addtochosen(\"" + singlematch.match + "\");'>" + singlematch.highlighted + "</a></li>")
+	        console.log(singlematch.match);
+	    });
+	}
+
+	function getchosenlist(){
+		var chosenlist = []
+		var ul = $("#chosenresults li");
+		ul.each(function(idx, li){
+			chosenlist.push($(this).html());
+		});
+		console.log(chosenlist);
+		return chosenlist;
+	}
+
+	function makeform(){
+	//	var kidname = $("#name").val();
+	//	var kidclass = $("#class").val(); 
+		var chosenlist = getchosenlist();
+		console.log(chosenlist);
+	//	$("#fname").val(kidname);
+	//	$("#fclass").val(kidclass);
+	/*for (var i=0; i<chosenlist.length; i++){
+		$("form").append('<input type=\"hidden\" name=\"question'+i+'\" value=\"' + chosenlist[i] + '\"/>');
+	} */
+	$("form").append('<input type=\"hidden\" name=\"question\" value=\"' + chosenlist.toString() + '\"/>');
+	}
+
+		</script>
+
+
+
+	<div id="header">
+	<img src="http://images2.wikia.nocookie.net/__cb20130205001143/the-all-things-fishfam/images/f/fa/Communism.jpg"/><br> 
+	<b>!COMMUNISM! <br>
+	THE JOKE ISN'T FUNNY UNLESS EVERYONE GETS IT</b>
+	</div>
+	<nav style="text-align: center">
+		<ul class="list" style="width: 100%;">
+			<li class="nav"><a class="active" href="/">Trang chủ</a></li>
+			<li class="nav"><a href="addstuffs">Đăng câu hỏi</a></li>
+			<li class="nav"><a href="help">Cách sử dụng trang</a></li>
+			<li class="nav" style="float:right;"><a href="about">About</a></li>
+		</ul>
+	</nav>
+	<article>
+		
+		<div id="container"> 
+			<div style="text-align: center;"><b>HERE WE DO YOUR WORK FOR YOU YA LAZYASS</b></div>
+		<br><br><br>
+			<div>
+				<ul id="chosenresults"></ul>
+				<br><button onclick="$('#chosenresults').empty();">Remove All </button>
+			</div>
+			<br><br><input type="text" style = "width: 100%;" placeholder="Type query, hit enter" onkeydown="if (event.keycode === 13){console.log('clicked'); search();}" />
+			<br><br><button onclick="search();">Search</button><br><br>
+			<div>
+				<ul id="searchresults"></ul>
+			</div>
+
+			<form id="form" action="answer" method="POST">
+				<input id="fname" style = "width: 100%;" type="text" name="name" placeholder="Name"/> <br><br>
+				<input id="fclass" style = "width: 100%;" type="text" name="class" placeholder="Class"/> <br><br>
+				<input id="fschool" style = "width: 100%;" type="text" name="school" placeholder="School"/> <br><br>
+
+			</form>
+			<button onclick="makeform(); $('#form').submit(); ">Generate</button>
+		</div>
+	</article>
+</body>
+
+</html>

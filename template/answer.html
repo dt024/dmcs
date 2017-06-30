@@ -1,0 +1,116 @@
+<head> 
+	<title>Đoàn thanh niên cộng sản</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding"> 
+
+<style>
+	#container {
+		margin: auto;
+		padding: 25px;
+		width: 851px;
+		border: 2px solid black;
+		background-color: white;
+	} 
+	#header {
+		text-align: center;
+		color: white;
+	}
+	img {
+		width: 200px;
+	}
+	#text {
+		position: relative;
+		float: right;
+		width: 80%;
+	}
+	#text2 {
+		width: 100%;
+	}
+	#submit {
+		float: right; 
+	}
+	.highlight {
+		color: red;
+	}	
+
+	button{
+		float: right;
+	}
+	body{
+		width: 905px;
+		margin: auto;
+		background-color: blue;
+	}
+
+	img.backgroundimg{
+		display: block;
+		margin: auto;
+	}
+	ul.list {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    background-color:red
+	}
+
+	
+	.active {
+	    background-color: yellow;
+	}
+	li.nav {
+		    float: left;
+		}
+
+	li.nav a {
+		font-size: 20px;
+	    display: block;
+	    color: whitesmoke;
+	    text-align: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	}
+
+	li.nav a:hover {
+	    background-color:yellow;
+		color: red;
+	}
+
+
+
+	</style>	<script type="text/javascript">
+
+function load(){
+	for(var i=0; i<data.length; i++){
+		$("#bailam").append("<li>" + data[i] + "</li>");
+		console.log("loaded");
+	}
+}
+</script>
+</head>
+
+<body onload="//load();">
+
+	<div id="header"> 
+	!COMMUNISM! <br>
+	<img src="http://images2.wikia.nocookie.net/__cb20130205001143/the-all-things-fishfam/images/f/fa/Communism.jpg"/><br>
+	The most "EFFECTIVE" political system
+	</div>
+	<nav style="text-align: center">
+			<ul class="list" style="width: 100%;">
+				<li class="nav"><a class="active" href="/">Trang chủ</a></li>
+				<li class="nav"><a href="addstuffs">Đăng câu hỏi</a></li>
+				<li class="nav"><a href="help">Cách sử dụng trang</a></li>
+				<li class="nav" style="float:right;"><a href="about">About</a></li>
+			</ul>
+		</nav>
+	<div id="container">
+
+	
+		<p>[name]<br>[class]<br>[school]</p>
+		<h3 style="text-align: center">BÀI THU HOẠCH CẢM TÌNH ĐOÀN</h3>
+		<ol id="bailam">
+			[data]
+		</ol>
+	</div>
+</body>
